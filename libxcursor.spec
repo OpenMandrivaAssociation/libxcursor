@@ -1,4 +1,8 @@
-%define libxcursor %mklibname xcursor 1
+%define major 1
+%define libname %mklibname xcursor %{major}
+%define develname %mklibname xcursor -d
+%define staticdevelname %mklibname xcursor -d -s
+
 Name: libxcursor
 Summary:  X Cursor Library
 Version: 1.1.8
@@ -7,7 +11,6 @@ Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXcursor-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: libxfixes-devel >= 3.0.1.2
@@ -15,56 +18,59 @@ BuildRequires: libxrender-devel >= 0.9.0.2
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
 
+BuildRoot: %{_tmppath}/%{name}-root
+
 %description
-X Cursor Library
+X Cursor Library.
 
 #-----------------------------------------------------------
 
-%package -n %{libxcursor}
+%package -n %{libname}
 Summary:  X Cursor Library
 Group: Development/X11
 Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}
 
-%description -n %{libxcursor}
-X Cursor Library
+%description -n %{libname}
+X Cursor Library.
 
 #-----------------------------------------------------------
 
-%package -n %{libxcursor}-devel
+%package -n %{develname}
 Summary: Development files for %{name}
 Group: Development/X11
 
 Requires: x11-proto-devel >= 1.0.0
-Provides: libxcursor-devel = %{version}-%{release}
+Provides: %{name}-devel = %{version}-%{release}
 Conflicts: libxorg-x11-devel < 7.0
+Obsoletes: %mklibname xcursor 1 -d
+Requires: %{libname} = %{version}
 
-Requires: %{libxcursor} = %{version}
+%description -n %{develname}
+Development files for %{name}.
 
-%description -n %{libxcursor}-devel
-Development files for %{name}
-
-%pre -n %{libxcursor}-devel
+%pre -n %{develname}
 if [ -h %{_includedir}/X11 ]; then
 	rm -f %{_includedir}/X11
 fi
 
-%files -n %{libxcursor}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/libXcursor.so
 %{_libdir}/libXcursor.la
 %{_libdir}/pkgconfig/xcursor.pc
 %{_includedir}/X11/Xcursor/Xcursor.h
-%{_mandir}/man3/Xcursor.3x.bz2
+%{_mandir}/man3/Xcursor.3*
 
 #-----------------------------------------------------------
 
 %package -n %{libxcursor}-static-devel
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{libxcursor}-devel = %{version}
-Provides: libxcursor-static-devel = %{version}-%{release}
+Requires: %{libname}-devel = %{version}
+Provides: %{name}-static-devel = %{version}-%{release}
 Conflicts: libxorg-x11-static-devel < 7.0
+
 
 %description -n %{libxcursor}-static-devel
 Static development files for %{name}
@@ -91,10 +97,9 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{libxcursor}
+%files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/libXcursor.so.1
-%{_libdir}/libXcursor.so.1.0.2
+%{_libdir}/libXcursor.so.%{major}*

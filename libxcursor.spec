@@ -1,7 +1,7 @@
 %define libxcursor %mklibname xcursor 1
 Name: libxcursor
 Summary:  X Cursor Library
-Version: 1.1.7
+Version: 1.1.8
 Release: %mkrel 1
 Group: Development/X11
 License: MIT
@@ -98,5 +98,3 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/libXcursor.so.1
 %{_libdir}/libXcursor.so.1.0.2
-
-

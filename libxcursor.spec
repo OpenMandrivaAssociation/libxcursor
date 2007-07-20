@@ -6,7 +6,7 @@
 Name: libxcursor
 Summary:  X Cursor Library
 Version: 1.1.8
-Release: %mkrel 2
+Release: %mkrel 3
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -67,9 +67,10 @@ fi
 %package -n %{staticdevelname}
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{libname}-devel = %{version}
+Requires: %{develname} = %{version}
 Provides: %{name}-static-devel = %{version}-%{release}
 Conflicts: libxorg-x11-static-devel < 7.0
+Obsoletes: %{mklibname xcursor 1 -d -s}
 
 %description -n %{staticdevelname}
 Static development files for %{name}

@@ -60,7 +60,7 @@ fi
 %{_libdir}/libXcursor.la
 %{_libdir}/pkgconfig/xcursor.pc
 %{_includedir}/X11/Xcursor/Xcursor.h
-%{_mandir}/man3/3*
+%{_mandir}/man3/*
 
 #-----------------------------------------------------------
 

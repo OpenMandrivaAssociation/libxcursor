@@ -18,6 +18,7 @@ BuildRequires: libxrender-devel >= 0.9.0.2
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
 
+BuildRoot: %{_tmppath}/%{name}-root
 
 %description
 X Cursor Library.

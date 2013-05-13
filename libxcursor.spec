@@ -5,7 +5,7 @@
 Name: libxcursor
 Summary:  X Cursor Library
 Version: 1.1.13
-Release: 2
+Release: 3
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org

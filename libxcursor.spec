@@ -11,9 +11,9 @@ License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXcursor-%{version}.tar.bz2
 
-BuildRequires: libx11-devel >= 1.0.0
-BuildRequires: libxfixes-devel >= 3.0.1.2
-BuildRequires: libxrender-devel >= 0.9.0.2
+BuildRequires: pkgconfig(x11) >= 1.0.0
+BuildRequires: pkgconfig(xfixes) >= 3.0.1.2
+BuildRequires: pkgconfig(xrender) >= 0.9.0.2
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
 

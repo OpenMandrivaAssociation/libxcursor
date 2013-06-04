@@ -2,41 +2,41 @@
 %define libname %mklibname xcursor %{major}
 %define develname %mklibname xcursor -d
 
-Name: libxcursor
-Summary:  X Cursor Library
-Version: 1.1.13
-Release: 3
-Group: Development/X11
-License: MIT
-URL: http://xorg.freedesktop.org
-Source0: http://xorg.freedesktop.org/releases/individual/lib/libXcursor-%{version}.tar.bz2
+Name:		libxcursor
+Summary:	X Cursor Library
+Version:	1.1.14
+Release:	1
+Group:		Development/X11
+License:	MIT
+URL:		http://xorg.freedesktop.org
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXcursor-%{version}.tar.bz2
 
-BuildRequires: pkgconfig(x11) >= 1.0.0
-BuildRequires: pkgconfig(xfixes) >= 3.0.1.2
-BuildRequires: pkgconfig(xrender) >= 0.9.0.2
-BuildRequires: x11-proto-devel >= 1.0.0
-BuildRequires: x11-util-macros >= 1.0.1
+BuildRequires:	pkgconfig(x11) >= 1.0.0
+BuildRequires:	pkgconfig(xfixes) >= 3.0.1.2
+BuildRequires:	pkgconfig(xrender) >= 0.9.0.2
+BuildRequires:	x11-proto-devel >= 1.0.0
+BuildRequires:	x11-util-macros >= 1.0.1
 
 %description
 X Cursor Library.
 
 %package -n %{libname}
-Summary:  X Cursor Library
-Group: Development/X11
-Conflicts: libxorg-x11 < 7.0
-Provides: %{name} = %{EVRD}
+Summary:	X Cursor Library
+Group:		Development/X11
+Conflicts:	libxorg-x11 < 7.0
+Provides:	%{name} = %{EVRD}
 
 %description -n %{libname}
 X Cursor Library.
 
 %package -n %{develname}
-Summary: Development files for %{name}
-Group: Development/X11
-Provides: %{name}-devel = %{EVRD}
-Requires: %{libname} = %{version}
-Conflicts: libxorg-x11-devel < 7.0
-Obsoletes: %{_lib}xcursor1-devel < 1.1.13
-Obsoletes: %{_lib}xcursor-static-devel < 1.1.13
+Summary:	Development files for %{name}
+Group:		Development/X11
+Provides:	%{name}-devel = %{EVRD}
+Requires:	%{libname} = %{version}
+Conflicts:	libxorg-x11-devel < 7.0
+Obsoletes:	%{_lib}xcursor1-devel < 1.1.13
+Obsoletes:	%{_lib}xcursor-static-devel < 1.1.13
 
 %description -n %{develname}
 Development files for %{name}.
@@ -45,7 +45,6 @@ Development files for %{name}.
 %setup -qn libXcursor-%{version}
 
 %build
-autoreconf -fi
 %configure2_5x \
 	--disable-static \
 	--x-includes=%{_includedir}\
@@ -54,7 +53,6 @@ autoreconf -fi
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %files -n %{libname}

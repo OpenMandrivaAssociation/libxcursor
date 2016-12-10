@@ -5,11 +5,14 @@
 Summary:	X Cursor Library
 Name:		libxcursor
 Version:	1.1.14
-Release:	13
+Release:	14
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXcursor-%{version}.tar.bz2
+Patch0:		0000-Use-strdup-instead-of-malloc-strlen-strcpy.patch
+Patch1:		0001-Fix-some-clang-integer-sign-size-mismatch-warnings.patch
+Patch2:		0002-Insufficient-memory-for-terminating-null-of-string-i.patch
 BuildRequires:	pkgconfig(x11) >= 1.0.0
 BuildRequires:	pkgconfig(xfixes) >= 3.0.1.2
 BuildRequires:	pkgconfig(xorg-macros)
@@ -38,9 +41,10 @@ Development files for %{name}.
 
 %prep
 %setup -qn libXcursor-%{version}
+%apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--x-includes=%{_includedir}\
 	--x-libraries=%{_libdir}
@@ -58,4 +62,3 @@ Development files for %{name}.
 %{_libdir}/pkgconfig/xcursor.pc
 %{_includedir}/X11/Xcursor/Xcursor.h
 %{_mandir}/man3/*
-

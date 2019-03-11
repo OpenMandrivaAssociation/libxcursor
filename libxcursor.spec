@@ -4,8 +4,8 @@
 
 Summary:	X Cursor Library
 Name:		libxcursor
-Version:	1.1.15
-Release:	3
+Version:	1.2.0
+Release:	1
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
@@ -37,8 +37,7 @@ Requires:	%{libname} = %{version}-%{release}
 Development files for %{name}.
 
 %prep
-%setup -qn libXcursor-%{version}
-%apply_patches
+%autosetup -n libXcursor-%{version}
 
 %build
 %configure \
@@ -46,10 +45,10 @@ Development files for %{name}.
 	--x-includes=%{_includedir}\
 	--x-libraries=%{_libdir}
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libXcursor.so.%{major}*

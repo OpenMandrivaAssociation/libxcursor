@@ -86,7 +86,7 @@ cd build
 %if %{with compat32}
 %make_build -C build32
 %endif
-%make_build -C build32
+%make_build -C build
 
 %install
 %if %{with compat32}

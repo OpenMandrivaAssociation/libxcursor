@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(xrender) >= 0.9.0.2
 BuildRequires:	devel(libX11)
 BuildRequires:	devel(libXfixes)
 BuildRequires:	devel(libXrender)
+BuildRequires:	devel(libxcb)
 %endif
 
 %description

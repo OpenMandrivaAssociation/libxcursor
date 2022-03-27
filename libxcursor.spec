@@ -17,7 +17,7 @@
 Summary:	X Cursor Library
 Name:		libxcursor
 Version:	1.2.0
-Release:	2
+Release:	3
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
@@ -42,6 +42,7 @@ X Cursor Library.
 %package -n %{libname}
 Summary:	X Cursor Library
 Group:		Development/X11
+Requires:	x11-data-cursor-themes
 
 %description -n %{libname}
 X Cursor Library.
@@ -104,7 +105,7 @@ cd build
 %{_libdir}/libXcursor.so
 %{_libdir}/pkgconfig/xcursor.pc
 %{_includedir}/X11/Xcursor/Xcursor.h
-%{_mandir}/man3/*
+%doc %{_mandir}/man3/*
 
 %if %{with compat32}
 %files -n %{lib32name}

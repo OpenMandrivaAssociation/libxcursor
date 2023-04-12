@@ -28,6 +28,7 @@ BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(xproto)
 BuildRequires:	pkgconfig(xrender) >= 0.9.0.2
 %if %{with compat32}
+BuildRequires:	libc6
 BuildRequires:	devel(libX11)
 BuildRequires:	devel(libXfixes)
 BuildRequires:	devel(libXrender)
@@ -75,7 +76,7 @@ Development files for %{name}.
 
 %prep
 %autosetup -n libXcursor-%{version}
-export CONFIGURE_TOP="`pwd`"
+export CONFIGURE_TOP="$(pwd)"
 %if %{with compat32}
 mkdir build32
 cd build32

@@ -20,7 +20,7 @@ Version:	1.2.2
 Release:	1
 Group:		Development/X11
 License:	MIT
-Url:		http://xorg.freedesktop.org
+Url:		https://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXcursor-%{version}.tar.xz
 BuildRequires:	pkgconfig(x11) >= 1.0.0
 BuildRequires:	pkgconfig(xfixes) >= 3.0.1.2

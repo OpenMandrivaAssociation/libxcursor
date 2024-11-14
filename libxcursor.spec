@@ -16,7 +16,7 @@
 
 Summary:	X Cursor Library
 Name:		libxcursor
-Version:	1.2.2
+Version:	1.2.3
 Release:	1
 Group:		Development/X11
 License:	MIT
